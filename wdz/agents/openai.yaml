@@ -1,0 +1,4 @@
+interface:
+  display_name: "WDZ Research"
+  short_description: "WDZ research/coding/paper collaboration, CS frontier workflow"
+  default_prompt: "Use $wdz to help with my research project."
