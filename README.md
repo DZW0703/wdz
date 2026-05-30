@@ -2,7 +2,7 @@
 
 `wdz` is a Codex skill that packages WDZ's preferred research, coding, experiment, and paper-writing collaboration style.
 
-Use it when working on fast-moving CS research topics such as LLM, VLM, Agents, VLN, CV, RL, Data Mining, ML/DL, Medical AI, or when the task should follow WDZ's CPU-only, paper-oriented workflow: topic survey -> reproduction -> idea -> experiment -> results -> paper.
+Use it when working on fast-moving CS research topics such as LLM, VLM, Agents, VLN, CV, RL, Data Mining, ML/DL, Medical AI, or when the task should follow WDZ's paper-oriented workflow: topic survey -> reproduction -> idea -> experiment -> results -> paper. Temporary hardware limits can inform execution planning, but they should not dominate the skill's identity.
 
 ## Install
 

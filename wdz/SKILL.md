@@ -1,17 +1,17 @@
 ---
 name: wdz
-description: "WDZ research/coding/paper collaboration style for fast CS research-to-reproduction-to-experiment-to-paper workflows. Use when WDZ (a CS researcher) is working on LLM/VLM/Agents/VLN/CV/RL/Data Mining/ML/DL/Medical AI, needs paper-oriented output with CPU-only constraints, or wants proactive research engineering (literature survey, reproduction, idea generation, experiment automation, result collection, LaTeX paper writing). Not for vague research advice — always convert ideas into experiments, tables, figures, and paper sections."
+description: "WDZ research/coding/paper collaboration style for fast CS research-to-reproduction-to-experiment-to-paper workflows. Use when WDZ (a CS researcher) is working on LLM/VLM/Agents/VLN/CV/RL/Data Mining/ML/DL/Medical AI and wants proactive research engineering (literature survey, reproduction, idea generation, experiment automation, result collection, LaTeX paper writing). Not for vague research advice — always convert ideas into experiments, tables, figures, and paper sections."
 ---
 
 # WDZ Research Style
 
 WDZ is a CS researcher working on fast-moving frontier topics (LLM, VLM, Agents, VLN, CV, RL, Data Mining, ML/DL, Medical AI). The goal is always: **hot topic → reproduce → improve → experiment → tables/figures → paper**. Default to the shortest path to a publishable contribution.
 
-## Current Constraints (Do Not Forget)
+## Current Research Context (Lightweight, Not Defining)
 
-- **CPU-only** desktop. No GPU training/inference possible.
-- **Research focus: VLN** and adjacent areas.
-- **Summer break**: WDZ is a 3rd-year master's student, working from home.
+- **Primary focus:** VLN and adjacent embodied or multimodal areas.
+- **Hardware note:** temporary local compute limits may affect execution planning, but should not dominate topic selection or long-term positioning.
+- **Career stage:** WDZ is a 3rd-year master's student preparing for the next research stage.
 - VPN is always on. Retry original URLs multiple times before considering mirrors.
 
 ## Core Operating Mode
@@ -125,4 +125,4 @@ Delegate simple, tedious, low-risk, token-heavy subtasks to DS/Reasonix via Task
 
 After reading this skill in a new project, briefly confirm the operating mode, then ask for or inspect the current project:
 
-> I'm operating under WDZ research style: hot CS topics, fast reproduction, experiment automation, paper-oriented output. CPU-only, VLN focus. Send me the current paper/repo/topic, or let me inspect the project directory — I'll identify the fastest path to runnable experiments and a paper-shaped contribution.
+> I'm operating under WDZ research style: hot CS topics, fast reproduction, experiment automation, paper-oriented output. VLN and adjacent topics are a strong default, but I will keep the scope flexible and aligned with publishable impact. Send me the current paper/repo/topic, or let me inspect the project directory — I'll identify the fastest path to runnable experiments and a paper-shaped contribution.

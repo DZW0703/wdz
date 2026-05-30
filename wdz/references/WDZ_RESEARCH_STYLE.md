@@ -1,4 +1,4 @@
-# WDZ Research Style (Full Reference)
+# WDZ Research Style
 
 This document describes WDZ's research style, collaboration preferences, and preferred AI-assisted workflow. When starting a new research or coding conversation, read this file first and use it as the default operating context unless WDZ gives newer instructions.
 
@@ -22,17 +22,17 @@ Primary areas include, but are not limited to:
 
 The practical goal is to quickly identify promising topics, reproduce or adapt existing work, run convincing experiments, and produce paper drafts efficiently.
 
-## Current Status
+## Current Context
 
-WDZ is a third-year master's student about to graduate. During the summer break, WDZ cannot access the PhD advisor's lab to use their L20 GPUs. WDZ will be working from home on a desktop PC without a GPU.
+WDZ is a third-year master's student preparing for the next research stage. Some periods may involve limited local compute access, while later work may move into a better-equipped lab environment.
 
-The PhD advisor wants WDZ to explore the VLN (Vision-Language Navigation) direction during the summer and focus on research that does not require heavy GPU usage. WDZ agrees with this direction.
+VLN (Vision-Language Navigation) and closely related embodied or multimodal topics are an important current direction, especially when they offer a strong path to publishable work. However, the research scope should remain flexible rather than being overfit to a temporary setup.
 
-Current constraints:
+Current planning factors:
 
-- No GPU available, CPU-only environment.
-- Research direction: VLN and related areas.
-- Prioritize research tasks that do not require GPU training/inference, such as: literature surveys, benchmark evaluation, dataset analysis, methodology analysis, paper reviews, reproducibility studies, etc.
+- Treat hardware availability as a short-term execution factor, not as WDZ's defining identity.
+- Current advisor-aligned focus: VLN and adjacent topics, but expand when another direction is more promising or strategically important.
+- When local compute is limited, prioritize tasks with fast feedback loops first, such as literature surveys, benchmark evaluation, dataset analysis, methodology analysis, paper reviews, and reproducibility studies.
 
 ## Research Preference
 
@@ -63,6 +63,17 @@ Default behavior:
 - When writing code, refer to existing papers, official implementations, common baselines, and repository conventions.
 - Avoid vague research advice. Convert ideas into experiments, tables, figures, and paper sections.
 
+### Token Efficiency
+
+When interacting with Codex, CC-DS, or Reasonix-DS, aggressively minimize token consumption:
+
+- **Get to the point.** No pleasantries, no summaries of what you just did, no verbose explanations. Output only what is needed.
+- **Thinking/reasoning tokens are the #1 hidden cost.** Internal reasoning chains often consume 3-10x more tokens than visible output. Keep reasoning lean — don't overthink simple tasks.
+- **Context inflation is the real killer.** Every tool call result gets appended to the context window. Limit tool output with `head_limit`, read only what you need, and avoid re-reading files unnecessarily.
+- **Batch independent actions.** Parallel tool calls are cheaper than sequential ones because they avoid extra context rounds.
+- **Delegate token-heavy subtasks to DS/Reasonix via TaskPorter** — but when doing so, give complete, self-contained instructions to minimize back-and-forth supervision rounds.
+- **Just do the work.** Don't narrate your process, don't explain unless asked, don't add disclaimers or caveats. Execute, report the result concisely, move on.
+
 If information may be outdated, search the web or relevant repositories before making strong claims.
 
 ## Network Access Rules
@@ -82,7 +93,7 @@ WDZ prefers the following AI-assisted research skills:
 
 - **Nature-skills suite** (all): nature-academic-search, nature-citation, nature-data, nature-figure, nature-paper2ppt, nature-polishing, nature-reader, nature-response, nature-writing -- for paper writing, polishing, figure creation, citation management, and academic presentation.
 - **Academic Research skills** (all): academic-paper, academic-paper-reviewer, academic-pipeline, deep-research -- for the full academic pipeline from research to writing to review to finalization.
-- **TaskMarshal**: use it to save Codex tokens by delegating simple but tedious, low-risk, token-heavy subtasks to DS/Reasonix; Codex should keep complex judgment, architecture decisions, final edits, verification, and quality control. If DS output is not good enough, request a narrow redo and let Codex take over when needed.
+- **TaskPorter**: use it to save Codex tokens by delegating simple but tedious, low-risk, token-heavy subtasks to DS/Reasonix; Codex should keep complex judgment, architecture decisions, final edits, verification, and quality control. If DS output is not good enough, request a narrow redo and let Codex take over when needed.
 
 ## Preferred Research Workflow
 
@@ -321,6 +332,7 @@ Avoid:
 - Stopping after bad results without diagnosis.
 - Producing paper text that does not match the actual experiments.
 - Making claims that cannot be supported by results.
+- Verbose output, unnecessary narration, summaries of what was just done, disclaimers, or any token-wasting communication patterns. Just do the work and move on.
 
 ## Default First Message After Reading This File
 
@@ -332,4 +344,4 @@ Example:
 
 ## Short Version
 
-WDZ works broadly across hot computer science topics, especially LLM, VLM, Agent, VLN, CV, Medical Image Analysis, RL, and Data Mining. The main goal is to quickly investigate topics, reproduce code, propose feasible ideas, run experiments, improve results, collect tables and figures, write papers, and compile LaTeX. The assistant should be proactive, reference existing work, automate experiments, diagnose bad results, and always push toward a complete research output.
+WDZ works broadly across hot computer science topics, especially LLM, VLM, Agent, VLN, CV, Medical Image Analysis, RL, and Data Mining. The main goal is to quickly investigate topics, reproduce code, propose feasible ideas, run experiments, improve results, collect tables and figures, write papers, and compile LaTeX. The assistant should be proactive, reference existing work, automate experiments, diagnose bad results, and always push toward a complete research output. Minimize token consumption: be concise, avoid narration, batch actions, limit tool output, and delegate token-heavy subtasks to DS/Reasonix.

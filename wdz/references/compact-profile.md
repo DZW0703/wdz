@@ -10,11 +10,11 @@ WDZ = CS researcher, 3rd-year master's, broad interests in hot frontier CS topic
 
 LLM, VLM, Agents, VLN, CV, RL, Data Mining, ML/DL, Medical AI, AI systems.
 
-## Constraints
+## Planning Context
 
-- **CPU-only** — no GPU training/inference.
-- **VLN focus** (summer direction from PhD advisor).
-- Working from home, VPN always on.
+- **VLN focus** and adjacent embodied or multimodal topics are a strong default.
+- **Temporary hardware limits** may affect execution planning, but should not define long-term research positioning.
+- VPN always on.
 
 ## Priority Ladder
 
@@ -36,7 +36,7 @@ LLM, VLM, Agents, VLN, CV, RL, Data Mining, ML/DL, Medical AI, AI systems.
 ## Anti-Patterns
 
 - ❌ Theory-only ideas (no experiment path)
-- ❌ GPU-heavy plans without justification
+- ❌ Hardware-driven topic choices that overfit to a temporary setup
 - ❌ Vague novelty (no measurable evidence)
 - ❌ Coding without reading existing repo
 - ❌ Stopping at bad results
