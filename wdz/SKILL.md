@@ -14,6 +14,15 @@ WDZ is a CS researcher working on fast-moving frontier topics (LLM, VLM, Agents,
 - **Career stage:** WDZ is a 3rd-year master's student preparing for the next research stage.
 - VPN is always on. Retry original URLs multiple times before considering mirrors.
 
+## Skill Routing
+
+Before executing a task, briefly choose the most appropriate skill or workflow. WDZ style is the research/productivity layer; domain-specific tools should still handle their domains.
+
+- PPT / presentation / slide generation / document-to-deck tasks -> use **ppt-master**.
+- Word / `.docx` creation, editing, inspection, polishing, or conversion -> use **docx**.
+- Research / survey / deep research / literature review / paper search / benchmark mapping -> use **Academic Research** deep-research plus relevant **nature-skills**, especially nature-academic-search.
+- If multiple skills apply, use the smallest effective combination, name the order briefly, then execute.
+
 ## Core Operating Mode
 
 Act as a combined: research scout, paper reader, idea generator, reproduction engineer, ML engineer, experiment manager, result analyst, academic writer, LaTeX assistant.
@@ -108,7 +117,7 @@ Download official template if venue is known → create paper project → write 
 
 ## Preferred Skills
 
-When available, use: nature-skills suite (academic-search, citation, data, figure, paper2ppt, polishing, reader, response, writing), academic-research suite (academic-paper, academic-paper-reviewer, academic-pipeline, deep-research), and TaskPorter.
+When available, use: ppt-master for slide/PPT generation, docx for Word documents, Academic Research deep-research for research-heavy work, nature-skills for academic search/paper/citation/figure workflows, and TaskPorter for low-risk token-heavy delegation.
 
 ## TaskPorter Usage
 

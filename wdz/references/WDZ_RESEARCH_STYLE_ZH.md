@@ -50,6 +50,17 @@ WDZ倾向于选择满足以下大多数条件的研究方向：
 
 ## 协作风格
 
+### 技能选择规则
+
+执行任务前，先简短判断最适合调用哪些专门技能或工作流。不要把 WDZ 风格当作替代所有领域技能的总技能；它应作为任务路由、科研推进和产出风格层。
+
+默认路由：
+
+- 如果用户要求制作幻灯片、生成 PPT/PPTX、做 presentation，或把任意文档转成演示文稿，使用 **ppt-master**。
+- 如果用户要求创建、编辑、润色、检查或转换 Word 文档 / `.docx`，使用 **docx** skill。
+- 如果命令中包含调研、深度调研、文献综述、论文检索、来源筛选或 benchmark 梳理，使用 **Academic Research** 的 deep-research 工作流，并结合相关 **nature-skills** 调研工具，尤其是 nature-academic-search 以及相邻的 Nature 论文/调研技能。
+- 如果多个技能同时适用，选择最小但足够的技能组合，简短说明调用顺序，然后直接执行，避免不必要的来回确认。
+
 助手应积极主动、注重实施、具备研究意识。
 
 默认行为：
@@ -87,12 +98,14 @@ WDZ在做科研期间始终保持VPN连接。访问任何网站时（GitHub、Ar
 - VPN始终开启 —— 连接问题是暂时性的，重试通常能够解决。
 - 如果在执行任务时修改了任何DNS或网络配置，任务结束后请恢复到任务执行前的状态，以确保WDZ能正常上网。
 
-## 偏好的研究技能
+## 偏好的技能路由
 
-WDZ偏好以下AI辅助研究技能：
+WDZ 希望助手在执行任务前先判断最适合的技能组合，把任务交给最强的可用工具，而不是把所有任务都塞进通用流程。
 
-- **Nature-skills 套件（全部）**：包括 nature-academic-search、nature-citation、nature-data、nature-figure、nature-paper2ppt、nature-polishing、nature-reader、nature-response、nature-writing —— 用于论文写作、润色、图表制作、引用管理和学术展示。
-- **Academic Research 技能（全部）**：包括 academic-paper、academic-paper-reviewer、academic-pipeline、deep-research —— 用于从研究、写作、审稿到修订再到最终定稿的完整学术流水线。
+- **ppt-master**：凡是用户要求制作幻灯片、生成 PPT/PPTX、做 presentation，或把任意文档转换成演示文稿，都使用它。
+- **docx**：凡是用户要求创建、编辑、检查、润色或转换 Word 文档 / `.docx` 文件，都使用 docx skill。
+- **Academic Research 技能**：遇到调研、深度调研、文献综述、论文检索、来源筛选、benchmark 梳理或长篇研究报告时，使用 deep-research 以及相关 academic pipeline 技能。
+- **Nature-skills 套件**：使用 nature-academic-search 及相邻的 Nature 研究/论文技能来完成学术检索、引用核验、论文阅读、论文写作、润色、图表、数据可用性、审稿回复和基于来源的研究输出。
 - **TaskPorter**：用于在需要节省 Codex tokens 时，将简单但繁琐、低风险、耗 token 的子任务交给 DS/Reasonix；复杂判断、架构决策、最终修改、验证和质量把关仍由 Codex 负责。如果 DS 输出质量不过关，应要求其窄范围返工，必要时由 Codex 接管。
 
 ## 偏好研究流程
@@ -344,4 +357,4 @@ WDZ看重能够快速支撑研究产出的代码。
 
 ## 简短版本
 
-WDZ的研究广泛覆盖热门计算机科学方向，尤其侧重LLM、VLM、Agent、VLN、CV、医学影像分析、RL和数据挖掘。主要目标是：快速调研方向、复现代码、提出可行的创意、运行实验、改进结果、收集表格和图表、撰写论文、编译LaTeX。助手应积极主动，参考现有工作，自动化实验，诊断不理想的结果，并始终朝着完整的研究产出推进。最大限度减少 token 消耗：保持简洁，避免叙述，批量操作，限制工具输出，将耗 token 的子任务委派给 DS/Reasonix。
+WDZ的研究广泛覆盖热门计算机科学方向，尤其侧重LLM、VLM、Agent、VLN、CV、医学影像分析、RL和数据挖掘。主要目标是：快速调研方向、复现代码、提出可行的创意、运行实验、改进结果、收集表格和图表、撰写论文、制作演示文稿、编译LaTeX。助手应积极主动，在执行前选择最合适的技能：PPT任务用 ppt-master，Word任务用 docx，调研任务用 Academic Research + nature-skills；同时参考现有工作，自动化实验，诊断不理想的结果，并始终朝着完整的研究产出推进。最大限度减少 token 消耗：保持简洁，避免叙述，批量操作，限制工具输出，将耗 token 的子任务委派给 DS/Reasonix。

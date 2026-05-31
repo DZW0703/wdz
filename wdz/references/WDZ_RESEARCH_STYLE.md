@@ -50,6 +50,17 @@ When choosing topics, prioritize feasibility and speed. A practical, runnable, p
 
 ## Collaboration Style
 
+### Skill Selection Rules
+
+Before executing a task, briefly decide which specialized skill or workflow fits best. Do not treat WDZ style as a replacement for domain-specific skills; use it as the routing and research-output style layer.
+
+Default routing:
+
+- If the user asks to make slides, create a presentation, generate PPT/PPTX, or turn any document into slides, use **ppt-master**.
+- If the user asks to create, edit, polish, inspect, or convert a Word document / `.docx`, use the **docx** skill.
+- If the command includes research, survey, deep research, literature review, paper search, source triage, or benchmark mapping, use **Academic Research** deep-research workflows together with the relevant **nature-skills** research tools, especially nature-academic-search and adjacent Nature research/paper skills.
+- If multiple skills apply, choose the smallest useful set, state the order briefly, then execute without unnecessary back-and-forth.
+
 The assistant should be proactive, implementation-oriented, and research-aware.
 
 Default behavior:
@@ -87,12 +98,14 @@ WDZ always keeps the VPN connected during research. When accessing any website (
 - The VPN is always on — connection issues are transient and usually resolve with retries.
 - If any DNS or network configuration was modified during a task, revert those changes to the pre-task state once the task is complete, to ensure WDZ can still access the internet normally.
 
-## Preferred Research Skills
+## Preferred Skills
 
-WDZ prefers the following AI-assisted research skills:
+WDZ expects the assistant to think about skill fit before execution and route work to the strongest available tool instead of forcing every task through a generic workflow.
 
-- **Nature-skills suite** (all): nature-academic-search, nature-citation, nature-data, nature-figure, nature-paper2ppt, nature-polishing, nature-reader, nature-response, nature-writing -- for paper writing, polishing, figure creation, citation management, and academic presentation.
-- **Academic Research skills** (all): academic-paper, academic-paper-reviewer, academic-pipeline, deep-research -- for the full academic pipeline from research to writing to review to finalization.
+- **ppt-master**: use it whenever the user asks to make slides, create a presentation, generate PPT/PPTX, or convert any document into a deck.
+- **docx**: use it whenever the user asks to create, edit, inspect, polish, or convert Word documents / `.docx` files.
+- **Academic Research skills**: use deep-research and related academic pipeline skills for research, literature review, paper search, source triage, benchmark mapping, and long-form research reports.
+- **Nature-skills suite**: use nature-academic-search and adjacent Nature research/paper skills for academic search, citation verification, paper reading, paper writing, polishing, figures, data availability, responses, and research-grounded outputs.
 - **TaskPorter**: use it to save Codex tokens by delegating simple but tedious, low-risk, token-heavy subtasks to DS/Reasonix; Codex should keep complex judgment, architecture decisions, final edits, verification, and quality control. If DS output is not good enough, request a narrow redo and let Codex take over when needed.
 
 ## Preferred Research Workflow
@@ -344,4 +357,4 @@ Example:
 
 ## Short Version
 
-WDZ works broadly across hot computer science topics, especially LLM, VLM, Agent, VLN, CV, Medical Image Analysis, RL, and Data Mining. The main goal is to quickly investigate topics, reproduce code, propose feasible ideas, run experiments, improve results, collect tables and figures, write papers, and compile LaTeX. The assistant should be proactive, reference existing work, automate experiments, diagnose bad results, and always push toward a complete research output. Minimize token consumption: be concise, avoid narration, batch actions, limit tool output, and delegate token-heavy subtasks to DS/Reasonix.
+WDZ works broadly across hot computer science topics, especially LLM, VLM, Agent, VLN, CV, Medical Image Analysis, RL, and Data Mining. The main goal is to quickly investigate topics, reproduce code, propose feasible ideas, run experiments, improve results, collect tables and figures, write papers, build presentations, and compile LaTeX. The assistant should be proactive, choose the right skill before execution, use ppt-master for PPT work, docx for Word work, Academic Research + nature-skills for research, automate experiments, diagnose bad results, and always push toward a complete research output. Minimize token consumption: be concise, avoid narration, batch actions, limit tool output, and delegate token-heavy subtasks to DS/Reasonix.
