@@ -12,6 +12,7 @@ WDZ is a CS researcher working on fast-moving frontier topics (LLM, VLM, Agents,
 - **Primary focus:** VLN and adjacent embodied or multimodal areas.
 - **Hardware note:** temporary local compute limits may affect execution planning, but should not dominate topic selection or long-term positioning.
 - **Career stage:** WDZ is a 3rd-year master's student preparing for the next research stage.
+- **Local worker stack:** Reasonix and Claude Code are both available on WDZ's machine, and both can use DeepSeek V4 Pro. When TaskPorter is used, find the DS/Reasonix route and prefer Pro unless WDZ asks otherwise.
 - VPN is always on. Retry original URLs multiple times before considering mirrors.
 
 ## Skill Routing
@@ -117,11 +118,11 @@ Download official template if venue is known → create paper project → write 
 
 ## Preferred Skills
 
-When available, use: ppt-master for slide/PPT generation, docx for Word documents, Academic Research deep-research for research-heavy work, nature-skills for academic search/paper/citation/figure workflows, and TaskPorter for low-risk token-heavy delegation.
+When available, use: ppt-master for slide/PPT generation, docx for Word documents, Academic Research deep-research for research-heavy work, nature-skills for academic search/paper/citation/figure workflows, and TaskPorter for low-risk token-heavy delegation through DS/Reasonix Pro.
 
 ## TaskPorter Usage
 
-Delegate simple, tedious, low-risk, token-heavy subtasks to DS/Reasonix via TaskPorter. Keep complex judgment, architecture decisions, final edits, verification, and quality control at Codex level. If DS output is insufficient, request a narrow redo; take over when necessary.
+Delegate simple, tedious, low-risk, token-heavy subtasks to DS/Reasonix via TaskPorter. WDZ has Reasonix and Claude Code locally, both with DeepSeek V4 Pro available; when TaskPorter is used, explicitly find the DS route and prefer Reasonix/DS Pro unless WDZ requests a different worker. Keep complex judgment, architecture decisions, final edits, verification, and quality control at Codex level. If DS output is insufficient, request a narrow redo; take over when necessary.
 
 ## References
 

@@ -33,6 +33,7 @@ Current planning factors:
 - Treat hardware availability as a short-term execution factor, not as WDZ's defining identity.
 - Current advisor-aligned focus: VLN and adjacent topics, but expand when another direction is more promising or strategically important.
 - When local compute is limited, prioritize tasks with fast feedback loops first, such as literature surveys, benchmark evaluation, dataset analysis, methodology analysis, paper reviews, and reproducibility studies.
+- Local agent setup: WDZ has both Reasonix and Claude Code available, and both can use DeepSeek V4 Pro. When TaskPorter is used, explicitly look for the DS/Reasonix route and prefer the Pro model for delegated worker tasks unless WDZ says otherwise.
 
 ## Research Preference
 
@@ -82,7 +83,7 @@ When interacting with Codex, CC-DS, or Reasonix-DS, aggressively minimize token 
 - **Thinking/reasoning tokens are the #1 hidden cost.** Internal reasoning chains often consume 3-10x more tokens than visible output. Keep reasoning lean — don't overthink simple tasks.
 - **Context inflation is the real killer.** Every tool call result gets appended to the context window. Limit tool output with `head_limit`, read only what you need, and avoid re-reading files unnecessarily.
 - **Batch independent actions.** Parallel tool calls are cheaper than sequential ones because they avoid extra context rounds.
-- **Delegate token-heavy subtasks to DS/Reasonix via TaskPorter** — but when doing so, give complete, self-contained instructions to minimize back-and-forth supervision rounds.
+- **Delegate token-heavy subtasks to DS/Reasonix Pro via TaskPorter when appropriate.** WDZ's machine has Reasonix and Claude Code, both with DeepSeek V4 Pro available. When TaskPorter is in play, first find the DS/Reasonix route instead of silently spending Codex tokens on broad, low-risk chores; give complete, self-contained instructions to minimize supervision rounds.
 - **Just do the work.** Don't narrate your process, don't explain unless asked, don't add disclaimers or caveats. Execute, report the result concisely, move on.
 
 If information may be outdated, search the web or relevant repositories before making strong claims.
@@ -106,7 +107,7 @@ WDZ expects the assistant to think about skill fit before execution and route wo
 - **docx**: use it whenever the user asks to create, edit, inspect, polish, or convert Word documents / `.docx` files.
 - **Academic Research skills**: use deep-research and related academic pipeline skills for research, literature review, paper search, source triage, benchmark mapping, and long-form research reports.
 - **Nature-skills suite**: use nature-academic-search and adjacent Nature research/paper skills for academic search, citation verification, paper reading, paper writing, polishing, figures, data availability, responses, and research-grounded outputs.
-- **TaskPorter**: use it to save Codex tokens by delegating simple but tedious, low-risk, token-heavy subtasks to DS/Reasonix; Codex should keep complex judgment, architecture decisions, final edits, verification, and quality control. If DS output is not good enough, request a narrow redo and let Codex take over when needed.
+- **TaskPorter**: use it to save Codex tokens by delegating simple but tedious, low-risk, token-heavy subtasks to DS/Reasonix. WDZ has Reasonix and Claude Code on the local machine, both backed by DeepSeek V4 Pro; if TaskPorter is used, find the DS route and prefer Reasonix/DS Pro unless WDZ requests another worker. Codex should keep complex judgment, architecture decisions, final edits, verification, and quality control. If DS output is not good enough, request a narrow redo and let Codex take over when needed.
 
 ## Preferred Research Workflow
 
@@ -357,4 +358,4 @@ Example:
 
 ## Short Version
 
-WDZ works broadly across hot computer science topics, especially LLM, VLM, Agent, VLN, CV, Medical Image Analysis, RL, and Data Mining. The main goal is to quickly investigate topics, reproduce code, propose feasible ideas, run experiments, improve results, collect tables and figures, write papers, build presentations, and compile LaTeX. The assistant should be proactive, choose the right skill before execution, use ppt-master for PPT work, docx for Word work, Academic Research + nature-skills for research, automate experiments, diagnose bad results, and always push toward a complete research output. Minimize token consumption: be concise, avoid narration, batch actions, limit tool output, and delegate token-heavy subtasks to DS/Reasonix.
+WDZ works broadly across hot computer science topics, especially LLM, VLM, Agent, VLN, CV, Medical Image Analysis, RL, and Data Mining. The main goal is to quickly investigate topics, reproduce code, propose feasible ideas, run experiments, improve results, collect tables and figures, write papers, build presentations, and compile LaTeX. The assistant should be proactive, choose the right skill before execution, use ppt-master for PPT work, docx for Word work, Academic Research + nature-skills for research, automate experiments, diagnose bad results, and always push toward a complete research output. Minimize token consumption: be concise, avoid narration, batch actions, limit tool output, and when TaskPorter is used, find DS/Reasonix and prefer DeepSeek V4 Pro for low-risk delegated chores.

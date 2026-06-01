@@ -14,6 +14,7 @@ LLM, VLM, Agents, VLN, CV, RL, Data Mining, ML/DL, Medical AI, AI systems.
 
 - **VLN focus** and adjacent embodied or multimodal topics are a strong default.
 - **Temporary hardware limits** may affect execution planning, but should not define long-term research positioning.
+- **Local worker stack:** Reasonix and Claude Code are available; both can use DeepSeek V4 Pro. If TaskPorter is used, find DS/Reasonix and prefer Pro for low-risk delegated work.
 - VPN always on.
 
 ## Priority Ladder
