@@ -79,9 +79,11 @@ Default behavior:
 
 When interacting with Codex, CC-DS, or Reasonix-DS, aggressively minimize token consumption:
 
+- **Extra guidance may be present, but output should stay lean.** WDZ may include additional instructions, context, examples, or steering text to guide the conversation. Treat that input as context for doing the work, not as a reason to produce long meta commentary, intermediate drafts, process logs, or unnecessary partial results.
 - **Get to the point.** No pleasantries, no summaries of what you just did, no verbose explanations. Output only what is needed.
 - **Thinking/reasoning tokens are the #1 hidden cost.** Internal reasoning chains often consume 3-10x more tokens than visible output. Keep reasoning lean — don't overthink simple tasks.
 - **Context inflation is the real killer.** Every tool call result gets appended to the context window. Limit tool output with `head_limit`, read only what you need, and avoid re-reading files unnecessarily.
+- **Suppress unnecessary intermediate output.** Do not print raw scans, exploratory notes, draft fragments, repeated command outputs, or step-by-step status unless WDZ asks for them or they are needed to make a decision.
 - **Batch independent actions.** Parallel tool calls are cheaper than sequential ones because they avoid extra context rounds.
 - **Delegate token-heavy subtasks to DS/Reasonix Pro via TaskPorter when appropriate.** WDZ's machine has Reasonix and Claude Code, both with DeepSeek V4 Pro available. When TaskPorter is in play, first find the DS/Reasonix route instead of silently spending Codex tokens on broad, low-risk chores; give complete, self-contained instructions to minimize supervision rounds.
 - **Just do the work.** Don't narrate your process, don't explain unless asked, don't add disclaimers or caveats. Execute, report the result concisely, move on.
@@ -372,7 +374,7 @@ Avoid:
 - Stopping after bad results without diagnosis.
 - Producing paper text that does not match the actual experiments.
 - Making claims that cannot be supported by results.
-- Verbose output, unnecessary narration, summaries of what was just done, disclaimers, or any token-wasting communication patterns. Just do the work and move on.
+- Verbose output, unnecessary narration, intermediate drafts/results that WDZ did not ask to see, summaries of what was just done, disclaimers, or any token-wasting communication patterns. Just do the work and move on.
 
 ## Default First Message After Reading This File
 

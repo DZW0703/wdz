@@ -6,6 +6,8 @@
 
 Use it when working on fast-moving CS research topics such as LLM, VLM, Agents, VLN, CV, RL, Data Mining, ML/DL, Medical AI, or when the task should follow WDZ's paper-oriented workflow: topic survey -> reproduction -> idea -> experiment -> results -> paper. Temporary hardware limits can inform execution planning, but they should not dominate the skill's identity.
 
+WDZ may provide extra steering input to guide an agent, but the agent should keep visible output concise and avoid unnecessary intermediate text, raw scans, process narration, repeated results, and draft fragments unless explicitly requested.
+
 ## Skill Routing
 
 The skill now explicitly routes specialized document and research tasks before execution:
