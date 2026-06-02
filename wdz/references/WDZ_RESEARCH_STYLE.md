@@ -33,7 +33,7 @@ Current planning factors:
 - Treat hardware availability as a short-term execution factor, not as WDZ's defining identity.
 - Current advisor-aligned focus: VLN and adjacent topics, but expand when another direction is more promising or strategically important.
 - When local compute is limited, prioritize tasks with fast feedback loops first, such as literature surveys, benchmark evaluation, dataset analysis, methodology analysis, paper reviews, and reproducibility studies.
-- Local agent setup: WDZ has both Reasonix and Claude Code available, and both can use DeepSeek V4 Pro. When TaskPorter is used, explicitly look for the DS/Reasonix route and prefer the Pro model for delegated worker tasks unless WDZ says otherwise.
+- Local agent setup: WDZ has Reasonix and Claude Code installed locally, and both can use DeepSeek V4 Pro. When TaskPorter is used, first find the DS/Reasonix route and use the Pro model by default for low-risk worker tasks unless WDZ asks for another worker or a cheaper mode.
 
 ## Research Preference
 
@@ -88,6 +88,32 @@ When interacting with Codex, CC-DS, or Reasonix-DS, aggressively minimize token 
 
 If information may be outdated, search the web or relevant repositories before making strong claims.
 
+### TaskPorter / Reasonix Invocation Contract
+
+When WDZ asks to use DS, Reasonix, TaskPorter, a worker, or token-saving delegation, do not stop at "no worker tool is exposed." Use this order:
+
+1. Prefer `taskporter-mcp` tools when they are visible: run `worker_doctor`, then use `worker_start_session` or `worker_ask` with `provider: "reasonix"` and `model: "pro"`.
+2. If `worker_*` tools are not visible, check whether Codex has `taskporter-mcp` registered in `C:\Users\Administrator\.codex\config.toml`.
+3. The expected Codex MCP entry is:
+
+```toml
+[mcp_servers.taskporter-mcp]
+command = "node"
+args = ["C:\\Users\\Administrator\\.codex\\tools\\TaskPorter\\mcp-server.js"]
+startup_timeout_sec = 120
+```
+
+4. If MCP tools are still unavailable in the current session, fall back to the local adapter instead of asking WDZ for an interface address:
+
+```powershell
+node C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js doctor
+node C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js ask "TASK" --dir "PROJECT_PATH" --model pro
+node C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js start --dir "PROJECT_PATH" --approve manual --model pro
+```
+
+5. Reasonix itself is installed as `reasonix` / `reasonix.ps1`, with config in `C:\Users\Administrator\.reasonix\config.json`. It runs through `reasonix acp` / stdio JSON-RPC for TaskPorter; do not treat the dashboard port as the Codex worker interface.
+6. Codex remains the planner and final reviewer. DS/Reasonix handles bounded, low-risk, token-heavy work; Codex verifies, repairs, and owns the final answer.
+
 ## Network Access Rules
 
 WDZ always keeps the VPN connected during research. When accessing any website (GitHub, ArXiv, conference proceedings, etc.):
@@ -107,7 +133,7 @@ WDZ expects the assistant to think about skill fit before execution and route wo
 - **docx**: use it whenever the user asks to create, edit, inspect, polish, or convert Word documents / `.docx` files.
 - **Academic Research skills**: use deep-research and related academic pipeline skills for research, literature review, paper search, source triage, benchmark mapping, and long-form research reports.
 - **Nature-skills suite**: use nature-academic-search and adjacent Nature research/paper skills for academic search, citation verification, paper reading, paper writing, polishing, figures, data availability, responses, and research-grounded outputs.
-- **TaskPorter**: use it to save Codex tokens by delegating simple but tedious, low-risk, token-heavy subtasks to DS/Reasonix. WDZ has Reasonix and Claude Code on the local machine, both backed by DeepSeek V4 Pro; if TaskPorter is used, find the DS route and prefer Reasonix/DS Pro unless WDZ requests another worker. Codex should keep complex judgment, architecture decisions, final edits, verification, and quality control. If DS output is not good enough, request a narrow redo and let Codex take over when needed.
+- **TaskPorter**: use it to save Codex tokens by delegating simple but tedious, low-risk, token-heavy subtasks to DS/Reasonix. WDZ has Reasonix and Claude Code on the local machine, both backed by DeepSeek V4 Pro; if TaskPorter is used, find the DS route and prefer Reasonix/DS Pro unless WDZ requests another worker. If `worker_*` tools are not exposed, check the `taskporter-mcp` MCP registration first, then fall back to `C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js`; do not ask WDZ for a separate HTTP interface address. Codex should keep complex judgment, architecture decisions, final edits, verification, and quality control. If DS output is not good enough, request a narrow redo and let Codex take over when needed.
 
 ## Preferred Research Workflow
 

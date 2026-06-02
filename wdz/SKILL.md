@@ -12,7 +12,7 @@ WDZ is a CS researcher working on fast-moving frontier topics (LLM, VLM, Agents,
 - **Primary focus:** VLN and adjacent embodied or multimodal areas.
 - **Hardware note:** temporary local compute limits may affect execution planning, but should not dominate topic selection or long-term positioning.
 - **Career stage:** WDZ is a 3rd-year master's student preparing for the next research stage.
-- **Local worker stack:** Reasonix and Claude Code are both available on WDZ's machine, and both can use DeepSeek V4 Pro. When TaskPorter is used, find the DS/Reasonix route and prefer Pro unless WDZ asks otherwise.
+- **Local worker stack:** Reasonix and Claude Code are both installed on WDZ's machine, and both can use DeepSeek V4 Pro. When TaskPorter is used, first find the DS/Reasonix route and prefer Pro unless WDZ asks otherwise.
 - VPN is always on. Retry original URLs multiple times before considering mirrors.
 
 ## Skill Routing
@@ -123,6 +123,30 @@ When available, use: ppt-master for slide/PPT generation, docx for Word document
 ## TaskPorter Usage
 
 Delegate simple, tedious, low-risk, token-heavy subtasks to DS/Reasonix via TaskPorter. WDZ has Reasonix and Claude Code locally, both with DeepSeek V4 Pro available; when TaskPorter is used, explicitly find the DS route and prefer Reasonix/DS Pro unless WDZ requests a different worker. Keep complex judgment, architecture decisions, final edits, verification, and quality control at Codex level. If DS output is insufficient, request a narrow redo; take over when necessary.
+
+### Reasonix / DS Invocation Rules
+
+Do not stop at "worker tools are not exposed" when WDZ asks for TaskPorter, DS, Reasonix, or token-saving delegation.
+
+1. If `taskporter-mcp` tools are visible, run `worker_doctor`, then call `worker_start_session` or `worker_ask` with `provider: "reasonix"` and `model: "pro"`.
+2. If `worker_*` tools are not visible, check Codex MCP registration in `C:\Users\Administrator\.codex\config.toml`. The expected entry is:
+
+```toml
+[mcp_servers.taskporter-mcp]
+command = "node"
+args = ["C:\\Users\\Administrator\\.codex\\tools\\TaskPorter\\mcp-server.js"]
+startup_timeout_sec = 120
+```
+
+3. If the current session still lacks MCP worker tools, use the local TaskPorter adapter instead of asking WDZ for an interface URL:
+
+```powershell
+node C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js doctor
+node C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js ask "TASK" --dir "PROJECT_PATH" --model pro
+node C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js start --dir "PROJECT_PATH" --approve manual --model pro
+```
+
+Reasonix itself is available as `reasonix` / `reasonix.ps1` and reads `C:\Users\Administrator\.reasonix\config.json`. TaskPorter reaches it through `reasonix acp` over stdio JSON-RPC; the dashboard port is not the Codex worker interface.
 
 ## References
 

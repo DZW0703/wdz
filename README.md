@@ -15,6 +15,19 @@ The skill now explicitly routes specialized document and research tasks before e
 - Research, survey, deep research, literature review, paper search, or benchmark mapping -> use **Academic Research** deep-research plus relevant **nature-skills**.
 - For mixed tasks, choose the smallest effective skill combination and execute in that order.
 
+## TaskPorter / Reasonix
+
+WDZ's machine has Reasonix and Claude Code, both backed by DeepSeek V4 Pro. For low-risk, token-heavy delegation, prefer TaskPorter -> Reasonix/DS Pro.
+
+If Codex cannot see `worker_*` tools, it should check `taskporter-mcp` registration in `C:\Users\Administrator\.codex\config.toml`; if the current session still lacks MCP tools, use:
+
+```powershell
+node C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js doctor
+node C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js ask "TASK" --dir "PROJECT_PATH" --model pro
+```
+
+Reasonix is reached through `reasonix acp` / stdio JSON-RPC, not a dashboard HTTP URL.
+
 ## Install
 
 Copy the skill folder into Codex skills:
