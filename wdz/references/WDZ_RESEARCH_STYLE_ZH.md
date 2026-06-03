@@ -116,6 +116,21 @@ node C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js start --dir "
 5. Reasonix 本体已安装为 `reasonix` / `reasonix.ps1`，配置在 `C:\Users\Administrator\.reasonix\config.json`。TaskPorter 底层通过 `reasonix acp` / stdio JSON-RPC 调用它；不要把 dashboard 端口当成 Codex worker 接口。
 6. Codex 仍然是规划者和最终审稿人。DS/Reasonix 负责边界清楚、低风险、耗 token 的子任务；Codex 负责验证、修补和最终交付。
 
+### 重大错误积累
+
+持续记录高影响错误，并把每一条沉淀成可执行规则。
+
+1. **Codex 遇到 TaskPorter 后任务执行到一半像是自己停止，优先检查 MCP 注册。** 如果 Codex 启动 TaskPorter 流程后中途卡住或停止，先检查 `C:\Users\Administrator\.codex\config.toml` 是否包含 `taskporter-mcp`。缺少 MCP 注册会导致 `worker_*` 工具不暴露，Codex 被迫走较弱的兜底路径，表现上就像对话自己停了。修复方式是在配置中加入：
+
+```toml
+[mcp_servers.taskporter-mcp]
+command = "node"
+args = ["C:\\Users\\Administrator\\.codex\\tools\\TaskPorter\\mcp-server.js"]
+startup_timeout_sec = 120
+```
+
+修改 Codex MCP 配置后，需要重启 Codex 或新开线程，新的 MCP 工具才会真正加载。
+
 ## 网络访问规则
 
 WDZ在做科研期间始终保持VPN连接。访问任何网站时（GitHub、ArXiv、会议论文集等）：

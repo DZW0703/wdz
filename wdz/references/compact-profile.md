@@ -15,6 +15,7 @@ LLM, VLM, Agents, VLN, CV, RL, Data Mining, ML/DL, Medical AI, AI systems.
 - **VLN focus** and adjacent embodied or multimodal topics are a strong default.
 - **Temporary hardware limits** may affect execution planning, but should not define long-term research positioning.
 - **Local worker stack:** Reasonix and Claude Code are available; both can use DeepSeek V4 Pro. If TaskPorter is used, find DS/Reasonix and prefer Pro for low-risk delegated work. If `worker_*` tools are not exposed, check `taskporter-mcp` in `C:\Users\Administrator\.codex\config.toml`, then fall back to `C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js`; do not ask WDZ for a separate interface URL.
+- **Major failure rule:** If TaskPorter makes Codex appear to stop mid-task, first check whether `taskporter-mcp` is registered in `C:\Users\Administrator\.codex\config.toml`. Missing MCP registration hides `worker_*` tools; after fixing config, restart Codex or open a fresh thread.
 - **Token style:** WDZ may provide extra steering input, but visible output should stay minimal. Do not show unnecessary intermediate notes, raw scans, draft fragments, repeated command output, or process narration.
 - VPN always on.
 

@@ -151,6 +151,21 @@ node C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js start --dir "
 
 Reasonix itself is available as `reasonix` / `reasonix.ps1` and reads `C:\Users\Administrator\.reasonix\config.json`. TaskPorter reaches it through `reasonix acp` over stdio JSON-RPC; the dashboard port is not the Codex worker interface.
 
+## Major Failure Log
+
+Keep a running record of high-impact failures and convert each one into an operational rule.
+
+1. **TaskPorter can make Codex appear to stop mid-task when MCP is not registered.** If Codex starts a TaskPorter workflow and then stalls or stops halfway, first check `C:\Users\Administrator\.codex\config.toml` for the `taskporter-mcp` entry. Missing MCP registration prevents `worker_*` tools from being exposed, pushes Codex toward weaker fallback paths, and can make the conversation look like it stopped by itself. Fix by adding:
+
+```toml
+[mcp_servers.taskporter-mcp]
+command = "node"
+args = ["C:\\Users\\Administrator\\.codex\\tools\\TaskPorter\\mcp-server.js"]
+startup_timeout_sec = 120
+```
+
+After changing Codex MCP config, restart Codex or open a fresh thread so the new MCP tools are actually loaded.
+
 ## References
 
 - **[WDZ_RESEARCH_STYLE.md](references/WDZ_RESEARCH_STYLE.md)** — Full English style reference (authoritative source). Load for detailed examples, expanded explanations, and the complete context.
