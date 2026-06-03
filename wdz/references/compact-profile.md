@@ -16,6 +16,7 @@ LLM, VLM, Agents, VLN, CV, RL, Data Mining, ML/DL, Medical AI, AI systems.
 - **Temporary hardware limits** may affect execution planning, but should not define long-term research positioning.
 - **Local worker stack:** Reasonix and Claude Code are available; both can use DeepSeek V4 Pro. If TaskPorter is used, find DS/Reasonix and prefer Pro for low-risk delegated work. If `worker_*` tools are not exposed, check `taskporter-mcp` in `C:\Users\Administrator\.codex\config.toml`, then fall back to `C:\Users\Administrator\.codex\tools\TaskPorter\reasonixctl.js`; do not ask WDZ for a separate interface URL.
 - **Major failure rule:** If TaskPorter makes Codex appear to stop mid-task, first check whether `taskporter-mcp` is registered in `C:\Users\Administrator\.codex\config.toml`. Missing MCP registration hides `worker_*` tools; after fixing config, restart Codex or open a fresh thread.
+- **Git push failure rule:** If GitHub push fails while V2Ray/V2RayN is running, find the active local listener port and push with per-command proxy flags such as `git -c http.proxy=http://127.0.0.1:10808 -c https.proxy=http://127.0.0.1:10808 push origin main`. Do not change global Git, DNS, system proxy, or VPN settings for a one-off push.
 - **Token style:** WDZ may provide extra steering input, but visible output should stay minimal. Do not show unnecessary intermediate notes, raw scans, draft fragments, repeated command output, or process narration.
 - VPN always on.
 

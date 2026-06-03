@@ -131,6 +131,15 @@ startup_timeout_sec = 120
 
 修改 Codex MCP 配置后，需要重启 Codex 或新开线程，新的 MCP 工具才会真正加载。
 
+2. **Git 推送失败时，优先使用当前已开启的本地 VPN 代理做临时 Git 代理，不要改全局设置。** 如果 `git push` 因为无法解析或连接 GitHub 失败，而 V2Ray/V2RayN 已经在运行，先查找本地监听端口，再用单次命令的 Git 代理变量重试推送。不要为了单次推送修改全局 Git 配置、DNS、系统代理或 VPN 设置。示例流程：
+
+```powershell
+Get-NetTCPConnection -State Listen | Where-Object { $_.LocalPort -in @(7890,7891,10808,10809,1080,8080) }
+git -c http.proxy=http://127.0.0.1:10808 -c https.proxy=http://127.0.0.1:10808 push origin main
+```
+
+端口必须以实际检测结果为准，不要硬编码猜测。推送后，用 `git status --short --branch` 确认本地分支不再领先 origin。
+
 ## 网络访问规则
 
 WDZ在做科研期间始终保持VPN连接。访问任何网站时（GitHub、ArXiv、会议论文集等）：

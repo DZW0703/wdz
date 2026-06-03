@@ -166,6 +166,15 @@ startup_timeout_sec = 120
 
 After changing Codex MCP config, restart Codex or open a fresh thread so the new MCP tools are actually loaded.
 
+2. **When Git push fails, use the active local VPN proxy as a temporary Git proxy instead of changing global settings.** If `git push` fails because Git cannot resolve or reach GitHub while V2Ray/V2RayN is already running, first identify the local listener port, then retry the push with per-command Git proxy variables. Do not change global Git, DNS, system proxy, or VPN settings for a one-off push. Example workflow:
+
+```powershell
+Get-NetTCPConnection -State Listen | Where-Object { $_.LocalPort -in @(7890,7891,10808,10809,1080,8080) }
+git -c http.proxy=http://127.0.0.1:10808 -c https.proxy=http://127.0.0.1:10808 push origin main
+```
+
+Use the detected port, not a hard-coded assumption. After pushing, verify with `git status --short --branch` that the local branch is no longer ahead of origin.
+
 ## References
 
 - **[WDZ_RESEARCH_STYLE.md](references/WDZ_RESEARCH_STYLE.md)** — Full English style reference (authoritative source). Load for detailed examples, expanded explanations, and the complete context.
